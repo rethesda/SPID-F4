@@ -19,7 +19,7 @@ namespace Distribute
 	namespace Event
 	{
 		class Manager :
-			public ISingleton<Manager>,
+			public REX::Singleton<Manager>,
 			public RE::BSTEventSink<RE::TESFormDeleteEvent>
 		{
 		public:

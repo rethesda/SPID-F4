@@ -115,7 +115,7 @@ namespace Distribute
 					}
 				}
 			}
-			timer.end();
+			timer.stop();
 		}
 
 		LogResults(actorCount);

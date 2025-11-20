@@ -113,7 +113,7 @@ namespace LinkedDistribution
 		void Link(Form*, Scope, DistributionType, const FormVec& linkedConfigs, const IndexOrCount&, const PercentChance&, const Path&);
 	};
 
-	class Manager : public ISingleton<Manager>
+	class Manager : public REX::Singleton<Manager>
 	{
 	public:
 		/// <summary>

@@ -153,7 +153,7 @@ bool Lookup::LookupForms()
 
 		timer.start();
 		const bool success = LookupDistributables(dataHandler);
-		timer.end();
+		timer.stop();
 
 		if (success) {
 			LogDistributablesLookup();

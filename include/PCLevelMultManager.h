@@ -15,7 +15,7 @@ namespace PCLevelMult
 	};
 
 	class Manager :
-		public ISingleton<Manager>,
+		public REX::Singleton<Manager>,
 		public RE::BSTEventSink<RE::MenuOpenCloseEvent>
 	{
 	public:

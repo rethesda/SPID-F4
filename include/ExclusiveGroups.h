@@ -28,7 +28,7 @@ namespace ExclusiveGroups
 	using FormGroupMap = std::unordered_map<RE::TESForm*, std::unordered_set<Group>>;
 	using GroupFormsMap = std::unordered_map<Group, std::unordered_set<RE::TESForm*>>;
 
-	class Manager : public ISingleton<Manager>
+	class Manager : public REX::Singleton<Manager>
 	{
 	public:
 		/// <summary>

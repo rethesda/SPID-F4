@@ -14,6 +14,7 @@
 #pragma warning(push)
 #include "F4SE/F4SE.h"
 #include "RE/Fallout.h"
+#include "REX/REX/Singleton.h"
 
 #ifdef NDEBUG
 #	include <spdlog/sinks/basic_file_sink.h>
@@ -24,7 +25,6 @@
 #include <ClibUtil/distribution.hpp>
 #include <ClibUtil/rng.hpp>
 #include <ClibUtil/simpleINI.hpp>
-#include <ClibUtil/singleton.hpp>
 #include <ClibUtil/string.hpp>
 #include <ClibUtil/timer.hpp>
 #include <ankerl/unordered_dense.h>
@@ -39,7 +39,6 @@ namespace logger = F4SE::log;
 namespace buffered_logger = LogBuffer;
 
 using namespace clib_util;
-using namespace clib_util::singleton;
 
 using namespace std::literals;
 using namespace string::literals;
@@ -105,19 +104,6 @@ namespace RE
 	using FormID = std::uint32_t;
 	using RefHandle = std::uint32_t;
 	using FormType = ENUM_FORM_ID;
-
-	struct SEXES
-	{
-		enum SEX : std::uint32_t
-		{
-			kNone = static_cast<std::underlying_type_t<SEX>>(-1),
-			kMale = 0,
-			kFemale = 1,
-
-			kTotal = 2
-		};
-	};
-	using SEX = SEXES::SEX;
 }
 
 #include "Cache.h"

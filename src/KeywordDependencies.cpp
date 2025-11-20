@@ -135,7 +135,7 @@ void Dependencies::ResolveKeywords()
 
 	const auto result = resolver.resolve();
 
-	timer.end();
+	timer.stop();
 
 	keywordForms.clear();
 	logger::info("\tSorted keywords: ");

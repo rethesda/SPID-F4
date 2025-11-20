@@ -15,7 +15,7 @@ namespace DeathDistribution
 	using namespace Forms;
 
 	class Manager :
-		public ISingleton<Manager>,
+		public REX::Singleton<Manager>,
 		public RE::BSTEventSink<RE::TESDeathEvent>
 	{
 	public:

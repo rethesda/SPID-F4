@@ -6,11 +6,15 @@
   "license": "MIT",
   "dependencies": [
     "clib-util",
-    "fmt",
     "rsm-mmio",
-    "spdlog",
     "srell",
+    "spdlog",
+    {
+      "name": "spdlog",
+      "features": [ "wchar" ]
+    },
     "xbyak",
     "unordered-dense"
-  ]
+  ],
+  "builtin-baseline": "46a114bc182fdeb162554f255f02a4fba10733b5"
 }
