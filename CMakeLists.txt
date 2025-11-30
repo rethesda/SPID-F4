@@ -33,7 +33,7 @@ set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL" CACHE 
 
 project(
 	po3_SpellPerkItemDistributorF4
-	VERSION 3.0.0
+	VERSION 3.1.1
 	LANGUAGES CXX
 )
 

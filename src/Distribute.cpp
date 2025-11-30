@@ -5,9 +5,10 @@
 
 namespace Distribute
 {
-	void Distribute(NPCData& npcData, const PCLevelMult::Input& input, Forms::DistributionSet& forms, bool allowOverwrites, DistributedForms* accumulatedForms)
+	void Distribute(NPCData& npcData, const PCLevelMult::Input& input, Forms::DistributionSet& forms, bool allowOverwrites, bool onDeath, DistributedForms* accumulatedForms)
 	{
 		const auto npc = npcData.GetNPC();
+		const auto actor = npcData.GetActor();
 
 		for_each_form<RE::BGSKeyword>(
 			npcData, forms.keywords, input, [&](const std::vector<RE::BGSKeyword*>& a_keywords) {
@@ -119,8 +120,15 @@ namespace Distribute
 
 		for_each_form<RE::TESBoundObject>(
 			npcData, forms.items, input, [&](std::map<RE::TESBoundObject*, Count>& a_objects) {
-				if (npc->AddObjectsToContainer(a_objects, npc)) {
+				if (onDeath) {
+					for (auto& [obj, count] : a_objects) {
+						actor->AddInventoryItem(obj, nullptr, count, nullptr, nullptr, nullptr);
+					}
 					return true;
+				} else {
+					if (npc->AddObjectsToContainer(a_objects, npc)) {
+						return true;
+					}
 				}
 				return false;
 			},
@@ -164,7 +172,7 @@ namespace Distribute
 		if (!distributedForms.empty()) {
 			// TODO: This only does one-level linking. So that linked entries won't trigger another level of distribution.
 			LinkedDistribution::Manager::GetSingleton()->ForEachLinkedDistributionSet(LinkedDistribution::kRegular, distributedForms, [&](Forms::DistributionSet& set) {
-				Distribute(npcData, input, set, true, nullptr);  // TODO: Accumulate forms here? to log what was distributed.
+				Distribute(npcData, input, set, true, false, nullptr);  // TODO: Accumulate forms here? to log what was distributed.
 			});
 		}
 	}

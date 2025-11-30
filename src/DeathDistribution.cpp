@@ -216,12 +216,12 @@ namespace DeathDistribution
 					skins.GetForms()
 				};
 
-				Distribute::Distribute(npcData, input, entries, false, &distributedForms);
+				Distribute::Distribute(npcData, input, entries, false, true, &distributedForms);
 				// TODO: We can now log per-NPC distributed forms.
 
 				if (!distributedForms.empty()) {
 					LinkedDistribution::Manager::GetSingleton()->ForEachLinkedDistributionSet(LinkedDistribution::kDeath, distributedForms, [&](Forms::DistributionSet& set) {
-						Distribute::Distribute(npcData, input, set, true, nullptr);  // TODO: Accumulate forms here? to log what was distributed.
+						Distribute::Distribute(npcData, input, set, true, true, nullptr);  // TODO: Accumulate forms here? to log what was distributed.
 					});
 				}
 			}

@@ -1,6 +1,6 @@
 {
   "name": "spid-f4",
-  "version-string": "3.0.0",
+  "version-string": "3.1.1",
   "description": "",
   "homepage": "",
   "license": "MIT",
@@ -16,5 +16,5 @@
     "xbyak",
     "unordered-dense"
   ],
-  "builtin-baseline": "46a114bc182fdeb162554f255f02a4fba10733b5"
+  "builtin-baseline": "edffab1bcd2cb5b8c17d6ba34d5651ea0bf82979"
 }
